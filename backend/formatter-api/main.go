@@ -4,11 +4,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-var db = make(map[string]string)
-
 type dataPayload interface {
 	any
 }
+
 type incomingData struct {
 	FromFormat  string      `json:"fromFormat"`
 	ToFormat    string      `json:"toFormat"`
@@ -33,8 +32,6 @@ func CORSMiddleware() gin.HandlerFunc {
 }
 
 func setupRouter() *gin.Engine {
-	// Disable Console Color
-	// gin.DisableConsoleColor()
 	router := gin.Default()
 	router.Use(CORSMiddleware())
 
